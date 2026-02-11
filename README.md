@@ -77,84 +77,102 @@ telecom-x-churn-parte-2/
 
 ## 🛠️ Preparación de los datos
 
-El flujo de preparación de los datos incluye las siguientes etapas:
+El flujo de preparación de datos incluye:
 
 - Carga del archivo CSV con los datos tratados de la Parte 1  
-- Eliminación de columnas irrelevantes (por ejemplo, identificadores únicos)  
-- Clasificación de variables en categóricas y numéricas  
-- Codificación de variables categóricas mediante one-hot encoding  
-- Verificación de la proporción de churn para analizar el desbalance de clases  
-- Separación de los datos en conjuntos de entrenamiento y prueba  
-- Aplicación de balanceo de clases únicamente sobre el conjunto de entrenamiento para evitar data leakage  
-- Normalización / estandarización de variables numéricas para modelos sensibles a la escala  
+- Eliminación de columnas irrelevantes (por ejemplo, IDs)  
+- Separación de variables categóricas y numéricas  
+- Encoding de variables categóricas mediante one-hot encoding  
+- Verificación de la proporción de churn para analizar desbalance de clases  
+- Aplicación de técnicas de balanceo solo sobre el conjunto de entrenamiento para evitar data leakage  
+- Normalización / estandarización de variables para modelos sensibles a la escala  
 
-Estas decisiones permiten asegurar que los modelos se entrenen sin introducir sesgos y que las métricas obtenidas reflejen un desempeño realista.
-
----
+📌 Nota: El balanceo de clases se muestra a nivel exploratorio, pero para entrenar los modelos se aplica únicamente sobre el conjunto de entrenamiento.
 
 ## 📊 Análisis exploratorio y correlación
 
-Se realiza un análisis exploratorio de los datos (EDA) para comprender la distribución de las variables y su relación con la cancelación de clientes (churn).
+Se realiza un análisis de correlación entre variables numéricas para identificar posibles relaciones con la cancelación.
 
-Entre las principales acciones se incluyen:
+Además, se estudian relaciones dirigidas como:
 
-- Análisis de la proporción de clientes que cancelan vs los que permanecen  
-- Visualización de variables clave como antigüedad, pago mensual y pago total en función del churn  
-- Construcción de una matriz de correlación para variables numéricas  
-- Análisis dirigido mediante boxplots y scatterplots para detectar patrones relevantes  
+- Antigüedad vs Churn  
+- Gasto total vs Churn  
 
-Estos análisis permiten identificar qué variables podrían tener mayor impacto en la cancelación y sirven como base para la etapa de modelado.
-
----
+Utilizando gráficos como boxplots y matrices de correlación para detectar patrones y tendencias relevantes.
 
 ## 🤖 Modelado predictivo
 
-Se construyen dos modelos con enfoques distintos para comparar desempeño:
+Se divide el dataset en conjuntos de entrenamiento y prueba (train/test split).
 
-- **Regresión Logística**: modelo sensible a la escala de las variables, por lo que requiere normalización previa. Permite además interpretar los coeficientes como impacto de cada variable en la probabilidad de churn.  
-- **Random Forest**: modelo basado en árboles, no sensible a la escala de las variables, capaz de capturar relaciones no lineales y medir importancia de variables.
+Se entrenan al menos dos modelos:
 
-El conjunto de datos se divide en:
+- Un modelo que requiere normalización (por ejemplo, Regresión Logística o KNN)  
+- Un modelo que no requiere normalización (por ejemplo, Árbol de Decisión o Random Forest)  
 
-- **Entrenamiento (70%)**  
-- **Prueba (30%)**
+📌 Justificación:
 
-El balanceo de clases se aplica solo sobre el conjunto de entrenamiento para evitar fuga de información (data leakage).
+Modelos basados en distancia u optimización (Regresión Logística, KNN, SVM) son sensibles a la escala de los datos, por lo que la normalización es necesaria.
 
-Los modelos se evalúan utilizando:
+Modelos basados en árboles no dependen de la escala de las variables.
 
-- Accuracy  
-- Precision  
+## 📈 Evaluación de modelos
+
+Cada modelo se evalúa utilizando:
+
+- Exactitud (Accuracy)  
+- Precisión (Precision)  
 - Recall  
 - F1-score  
 - Matriz de confusión  
 
----
+Luego se comparan los resultados para analizar:
 
-## 📈 Interpretación de resultados
+- Qué modelo presenta mejor desempeño  
+- Posibles casos de overfitting o underfitting  
+- Ajustes potenciales para mejorar los resultados  
 
-Para interpretar los modelos se analizan:
+## 🧠 Interpretación de variables
 
-- **Regresión Logística**: coeficientes de las variables, donde el signo indica si aumentan o disminuyen la probabilidad de churn y el valor absoluto indica la magnitud del impacto.  
-- **Random Forest**: importancia de variables basada en la reducción de impureza en los árboles.
+Según el modelo utilizado, se analiza la importancia de las variables:
 
-La comparación entre ambos enfoques permite identificar factores consistentes que influyen en la cancelación de clientes.
+- En modelos lineales: coeficientes de las variables  
+- En Random Forest: importancia de variables basada en la reducción de impureza  
+- En otros modelos: métricas o pesos relevantes para entender la contribución de cada variable  
 
----
+El objetivo es identificar qué factores influyen más en la cancelación de clientes.
 
-## 📝 Conclusiones y recomendaciones
+## 🚀 Instrucciones para ejecutar
 
-A partir del análisis y el modelado se concluye que:
+### 1️⃣ Clonar el repositorio
 
-- Existen variables contractuales y de facturación con fuerte impacto en la cancelación.  
-- El uso de modelos con distintos supuestos (lineal vs no lineal) permite obtener una visión más robusta del problema.  
-- La combinación de métricas y análisis de importancia de variables ayuda a transformar resultados técnicos en decisiones de negocio.
+```git clone https://github.com/belubullorini/telecom-x-churn-parte-2.git```
 
-### Recomendaciones estratégicas:
+### 2️⃣ Instalar dependencias
 
-- Incentivar contratos de mayor duración.  
-- Diseñar acciones específicas para clientes con mayor riesgo de churn.  
-- Revisar la oferta de servicios asociados a mayor probabilidad de cancelación.  
-- Implementar monitoreo continuo de métricas de retención para ajustar estrategias.
+```pip install pandas numpy matplotlib scikit-learn```
 
+### 3️⃣ Ejecutar el notebook
 
+Podés ejecutarlo en Jupyter Notebook o Google Colab:
+
+- Cargar el archivo datos_tratados.csv  
+- Ejecutar las celdas de preparación de datos  
+- Realizar el EDA y análisis de correlación  
+- Entrenar los modelos  
+- Evaluar métricas y comparar resultados  
+- Analizar la importancia de variables y conclusiones  
+
+## 📝 Conclusiones finales
+
+- Se identifican las variables más influyentes en la cancelación de clientes  
+- Se comparan modelos con y sin normalización  
+- Se selecciona el modelo con mejor desempeño según métricas  
+- Se proponen posibles estrategias de retención basadas en los resultados obtenidos  
+
+## 👩‍💻 Autoría
+
+Proyecto realizado por **M. Belén Bullorini**, en el marco del programa  
+ONE Oracle Next Education.
+
+🔗 LinkedIn: https://www.linkedin.com/in/belenbullorini  
+🔗 GitHub: https://github.com/belubullorini  
