@@ -2,7 +2,7 @@
   <img src="assets/Banner-telecomX.gif" alt="Banner del proyecto" width="600">
 </p>
 
-![Estado](https://img.shields.io/badge/estado-en%20desarrollo-yellow)
+![Estado](https://img.shields.io/badge/estado-finalizado-brightgreen)
 ![Lenguaje](https://img.shields.io/badge/lenguaje-Python-blue)
 ![Licencia](https://img.shields.io/badge/licencia-MIT-green)
 ![Última actualización](https://img.shields.io/badge/actualizado-2026--02--11-purple)
@@ -19,8 +19,8 @@ Este proyecto se enfoca en la **construcción de modelos predictivos** para anti
 - [📌 Estado del proyecto](#-estado-del-proyecto)
 - [🎯 Propósito del análisis](#-propósito-del-análisis)
 - [🗂 Estructura del proyecto](#-estructura-del-proyecto)
+- [📊 Ejemplos gráficos e insights](#-ejemplos-gráficos-e-insights)
 - [🛠️ Preparación de los datos](#-preparación-de-los-datos)
-- [📊 Análisis exploratorio y correlación](#-análisis-exploratorio-y-correlación)
 - [🤖 Modelado predictivo](#-modelado-predictivo)
 - [📈 Evaluación de modelos](#-evaluación-de-modelos)
 - [🧠 Interpretación de variables](#-interpretación-de-variables)
@@ -31,7 +31,7 @@ Este proyecto se enfoca en la **construcción de modelos predictivos** para anti
 ---
 
 ## 📌 Estado del proyecto
-🛠️ En desarrollo  
+✅ Proyecto finalizado  
 Incluye preparación de datos, análisis exploratorio, entrenamiento de modelos y evaluación de métricas.
 
 ---
@@ -75,6 +75,26 @@ telecom-x-churn-parte-2/
 
 ---
 
+## 📊 Ejemplos gráficos e insights
+
+✔ **Antigüedad vs Churn**  
+Clientes con menor tiempo en la empresa presentan mayor probabilidad de cancelar el servicio.  
+<img src="images/boxplot_antiguedad_churn.png" width="600">
+
+✔ **Gasto total vs Churn**  
+El análisis de gasto total muestra diferencias entre clientes que permanecen y los que cancelan.  
+<img src="images/boxplot_gasto_churn.png" width="600">
+
+✔ **Correlación entre variables numéricas**  
+Se observa la relación entre variables numéricas y su impacto en la predicción de churn.  
+<img src="images/correlacion_numericas.png" width="600">
+
+✔ **Matriz de confusión del modelo**  
+Evaluación de desempeño del modelo seleccionado.  
+<img src="images/matriz_confusion.png" width="600">
+
+---
+
 ## 🛠️ Preparación de los datos
 
 El flujo de preparación de datos incluye:
@@ -88,17 +108,6 @@ El flujo de preparación de datos incluye:
 - Normalización / estandarización de variables para modelos sensibles a la escala  
 
 📌 Nota: El balanceo de clases se muestra a nivel exploratorio, pero para entrenar los modelos se aplica únicamente sobre el conjunto de entrenamiento.
-
-## 📊 Análisis exploratorio y correlación
-
-Se realiza un análisis de correlación entre variables numéricas para identificar posibles relaciones con la cancelación.
-
-Además, se estudian relaciones dirigidas como:
-
-- Antigüedad vs Churn  
-- Gasto total vs Churn  
-
-Utilizando gráficos como boxplots y matrices de correlación para detectar patrones y tendencias relevantes.
 
 ## 🤖 Modelado predictivo
 
@@ -175,4 +184,4 @@ Proyecto realizado por **M. Belén Bullorini**, en el marco del programa
 ONE Oracle Next Education.
 
 🔗 LinkedIn: https://www.linkedin.com/in/belenbullorini  
-🔗 GitHub: https://github.com/belubullorini  
+🔗 GitHub: https://github.com/belubullorini
