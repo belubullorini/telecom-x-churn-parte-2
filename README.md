@@ -20,7 +20,7 @@ Este proyecto se enfoca en la **construcción de modelos predictivos** para anti
 - [🎯 Propósito del análisis](#proposito-del-analisis)
 - [🗂 Estructura del proyecto](#estructura-del-proyecto)
 - [🛠️ Preparación de los datos](#preparacion-de-los-datos)
-- [📊 Ejemplos gráficos e insights](#ejemplos-graficos-e-insights)
+- [📊 Ejemplos gráficos e insights](#-ejemplos-gráficos-e-insights)
 - [🤖 Modelado predictivo](#modelado-predictivo)
 - [📈 Evaluación de modelos](#evaluacion-de-modelos)
 - [🧠 Interpretación de variables](#interpretacion-de-variables)
