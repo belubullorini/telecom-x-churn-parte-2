@@ -19,8 +19,8 @@ Este proyecto se enfoca en la **construcción de modelos predictivos** para anti
 - [📌 Estado del proyecto](#-estado-del-proyecto)
 - [🎯 Propósito del análisis](#-propósito-del-análisis)
 - [🗂 Estructura del proyecto](#-estructura-del-proyecto)
-- [📊 Ejemplos gráficos e insights](#-ejemplos-gráficos-e-insights)
 - [🛠️ Preparación de los datos](#-preparación-de-los-datos)
+- [📊 Ejemplos gráficos e insights](#-ejemplos-gráficos-e-insights)
 - [🤖 Modelado predictivo](#-modelado-predictivo)
 - [📈 Evaluación de modelos](#-evaluación-de-modelos)
 - [🧠 Interpretación de variables](#-interpretación-de-variables)
@@ -75,7 +75,25 @@ telecom-x-churn-parte-2/
 
 ---
 
+## 🛠️ Preparación de los datos
+
+El flujo de preparación de datos incluye:
+
+- Carga del archivo CSV con los datos tratados de la Parte 1  
+- Eliminación de columnas irrelevantes (por ejemplo, IDs)  
+- Separación de variables categóricas y numéricas  
+- Encoding de variables categóricas mediante one-hot encoding  
+- Verificación de la proporción de churn para analizar desbalance de clases  
+- Aplicación de técnicas de balanceo solo sobre el conjunto de entrenamiento para evitar data leakage  
+- Normalización / estandarización de variables para modelos sensibles a la escala  
+
+📌 Nota: El balanceo de clases se muestra a nivel exploratorio, pero para entrenar los modelos se aplica únicamente sobre el conjunto de entrenamiento.
+
+---
+
 ## 📊 Ejemplos gráficos e insights
+
+Se incluyen visualizaciones clave obtenidas durante el análisis exploratorio de datos (EDA) para identificar patrones y tendencias.
 
 ✔ **Antigüedad vs Churn**  
 Clientes con menor tiempo en la empresa presentan mayor probabilidad de cancelar el servicio.  
@@ -95,20 +113,6 @@ Evaluación de desempeño del modelo seleccionado.
 
 ---
 
-## 🛠️ Preparación de los datos
-
-El flujo de preparación de datos incluye:
-
-- Carga del archivo CSV con los datos tratados de la Parte 1  
-- Eliminación de columnas irrelevantes (por ejemplo, IDs)  
-- Separación de variables categóricas y numéricas  
-- Encoding de variables categóricas mediante one-hot encoding  
-- Verificación de la proporción de churn para analizar desbalance de clases  
-- Aplicación de técnicas de balanceo solo sobre el conjunto de entrenamiento para evitar data leakage  
-- Normalización / estandarización de variables para modelos sensibles a la escala  
-
-📌 Nota: El balanceo de clases se muestra a nivel exploratorio, pero para entrenar los modelos se aplica únicamente sobre el conjunto de entrenamiento.
-
 ## 🤖 Modelado predictivo
 
 Se divide el dataset en conjuntos de entrenamiento y prueba (train/test split).
@@ -123,6 +127,8 @@ Se entrenan al menos dos modelos:
 Modelos basados en distancia u optimización (Regresión Logística, KNN, SVM) son sensibles a la escala de los datos, por lo que la normalización es necesaria.
 
 Modelos basados en árboles no dependen de la escala de las variables.
+
+---
 
 ## 📈 Evaluación de modelos
 
@@ -140,6 +146,8 @@ Luego se comparan los resultados para analizar:
 - Posibles casos de overfitting o underfitting  
 - Ajustes potenciales para mejorar los resultados  
 
+---
+
 ## 🧠 Interpretación de variables
 
 Según el modelo utilizado, se analiza la importancia de las variables:
@@ -149,6 +157,8 @@ Según el modelo utilizado, se analiza la importancia de las variables:
 - En otros modelos: métricas o pesos relevantes para entender la contribución de cada variable  
 
 El objetivo es identificar qué factores influyen más en la cancelación de clientes.
+
+---
 
 ## 🚀 Instrucciones para ejecutar
 
@@ -171,12 +181,16 @@ Podés ejecutarlo en Jupyter Notebook o Google Colab:
 - Evaluar métricas y comparar resultados  
 - Analizar la importancia de variables y conclusiones  
 
+---
+
 ## 📝 Conclusiones finales
 
 - Se identifican las variables más influyentes en la cancelación de clientes  
 - Se comparan modelos con y sin normalización  
 - Se selecciona el modelo con mejor desempeño según métricas  
 - Se proponen posibles estrategias de retención basadas en los resultados obtenidos  
+
+---
 
 ## 👩‍💻 Autoría
 
